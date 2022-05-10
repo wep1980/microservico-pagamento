@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
+
+import br.com.wepdev.microservicopagamento.data.vo.ProdutoVendaVO;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -44,6 +47,13 @@ public class ProdutoVenda implements Serializable{
 	@JoinColumn(name = "id_venda")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Venda venda;
+	
+	
+	public static ProdutoVenda converteProdutoVendaVOParaProdutoVenda(ProdutoVendaVO produtoVendaVO) {
+		return new ModelMapper().map(produtoVendaVO, ProdutoVenda.class);
+				
+		
+	}
 
 
 
