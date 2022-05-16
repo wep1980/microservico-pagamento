@@ -62,7 +62,7 @@ public class VendaController {
 		
 		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC; // if ternario, se o que veio por parametro for igual a desc, ordem decrescente, senão ordem normal
 		
-		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "nome")); // define o numero da pagina, tamanho de elementos por pagina, e a direção de ordenação que é feita por nome
+		Pageable pageable = PageRequest.of(page, limit, Sort.by(sortDirection, "data")); // define o numero da pagina, tamanho de elementos por pagina, e a direção de ordenação que é feita por nome
 		
 		Page<VendaVO> vendas = vendaService.findAll(pageable); // Buscando os produtos
 		

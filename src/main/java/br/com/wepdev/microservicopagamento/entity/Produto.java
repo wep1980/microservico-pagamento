@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.modelmapper.ModelMapper;
+
+import br.com.wepdev.microservicopagamento.data.vo.ProdutoVO;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,5 +30,10 @@ public class Produto {
 	
 	@Column(name = "estoque", length = 10, nullable = false)
 	private Integer estoque;
+	
+	
+	public static Produto converteProdutoVOParaProduto(ProdutoVO produtoVO) {
+		return new ModelMapper().map(produtoVO, Produto.class);
+	}
 
 }
